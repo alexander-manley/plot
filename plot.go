@@ -80,6 +80,13 @@ type DataRanger interface {
 	DataRange() (xmin, xmax, ymin, ymax float64)
 }
 
+type orientation bool
+
+const (
+	vertical   orientation = true
+	horizontal orientation = false
+)
+
 // New returns a new plot with some reasonable
 // default settings.
 func New() (*Plot, error) {
@@ -87,11 +94,11 @@ func New() (*Plot, error) {
 	if err != nil {
 		return nil, err
 	}
-	x, err := makeAxis()
+	x, err := makeAxis(horizontal)
 	if err != nil {
 		return nil, err
 	}
-	y, err := makeAxis()
+	y, err := makeAxis(vertical)
 	if err != nil {
 		return nil, err
 	}
@@ -106,8 +113,10 @@ func New() (*Plot, error) {
 		Legend:          legend,
 	}
 	p.Title.TextStyle = draw.TextStyle{
-		Color: color.Black,
-		Font:  titleFont,
+		Color:  color.Black,
+		Font:   titleFont,
+		XAlign: draw.XCenter,
+		YAlign: draw.YTop,
 	}
 	return p, nil
 }
@@ -148,7 +157,7 @@ func (p *Plot) Draw(c draw.Canvas) {
 		c.Fill(c.Rectangle.Path())
 	}
 	if p.Title.Text != "" {
-		c.FillText(p.Title.TextStyle, vg.Point{c.Center().X, c.Max.Y}, -0.5, -1, p.Title.Text)
+		c.FillText(p.Title.TextStyle, vg.Point{X: c.Center().X, Y: c.Max.Y}, p.Title.Text)
 		c.Max.Y -= p.Title.Height(p.Title.Text) - p.Title.Font.Extents().Descent
 		c.Max.Y -= p.Title.Padding
 	}

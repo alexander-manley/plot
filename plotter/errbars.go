@@ -79,7 +79,7 @@ func (e *YErrorBars) Plot(c draw.Canvas, p *plot.Plot) {
 
 // drawCap draws the cap if it is not clipped.
 func (e *YErrorBars) drawCap(c *draw.Canvas, x, y vg.Length) {
-	if !c.Contains(vg.Point{x, y}) {
+	if !c.Contains(vg.Point{X: x, Y: y}) {
 		return
 	}
 	c.StrokeLine2(e.LineStyle, x-e.CapWidth/2, y, x+e.CapWidth/2, y)
@@ -187,7 +187,7 @@ func (e *XErrorBars) Plot(c draw.Canvas, p *plot.Plot) {
 
 // drawCap draws the cap if it is not clipped.
 func (e *XErrorBars) drawCap(c *draw.Canvas, x, y vg.Length) {
-	if !c.Contains(vg.Point{x, y}) {
+	if !c.Contains(vg.Point{X: x, Y: y}) {
 		return
 	}
 	c.StrokeLine2(e.LineStyle, x, y-e.CapWidth/2, x, y+e.CapWidth/2)
