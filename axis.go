@@ -43,8 +43,10 @@ type Axis struct {
 		// Text is the axis label string.
 		Text string
 
-		// TextStyle is the style of the axis label text. For the vertical axis,
-		// 90 degrees of rotation will be added to the label text before drawing.
+		// TextStyle is the style of the axis label text.
+		// For the vertical axis, one quarter turn
+		// counter clockwise will be added to the label
+		// text before drawing.
 		draw.TextStyle
 	}
 
@@ -84,7 +86,7 @@ type Axis struct {
 //
 // The default range is (∞, ­∞), and thus any finite
 // value is less than Min and greater than Max.
-func makeAxis(orientation orientation) (Axis, error) {
+func makeAxis(orientation bool) (Axis, error) {
 	labelFont, err := vg.MakeFont(DefaultFont, vg.Points(12))
 	if err != nil {
 		return Axis{}, err

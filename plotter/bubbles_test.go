@@ -46,17 +46,20 @@ func TestBubblesRadius(t *testing.T) {
 }
 
 func ExampleBubbles() {
+
+	random := rand.New(rand.NewSource(1))
+
 	// randomTriples returns some random x, y, z triples
 	// with some interesting kind of trend.
 	randomTriples := func(n int) XYZs {
 		data := make(XYZs, n)
 		for i := range data {
 			if i == 0 {
-				data[i].X = rand.Float64()
+				data[i].X = random.Float64()
 			} else {
-				data[i].X = data[i-1].X + 2*rand.Float64()
+				data[i].X = data[i-1].X + 2*random.Float64()
 			}
-			data[i].Y = data[i].X + 10*rand.Float64()
+			data[i].Y = data[i].X + 10*random.Float64()
 			data[i].Z = data[i].X
 		}
 		return data

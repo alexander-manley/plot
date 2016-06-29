@@ -80,11 +80,9 @@ type DataRanger interface {
 	DataRange() (xmin, xmax, ymin, ymax float64)
 }
 
-type orientation bool
-
 const (
-	vertical   orientation = true
-	horizontal orientation = false
+	vertical   = true
+	horizontal = false
 )
 
 // New returns a new plot with some reasonable

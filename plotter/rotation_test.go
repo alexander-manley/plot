@@ -20,7 +20,7 @@ func Example_rotation() {
 	n := 100
 	xmax := 2 * math.Pi
 
-	// Sin creates a sin curve.
+	// Sin creates a sine curve.
 	sin := func(n int, xmax float64) XYs {
 		xy := make(XYs, n)
 		for i := 0; i < n; i++ {
@@ -30,7 +30,7 @@ func Example_rotation() {
 		return xy
 	}
 
-	// These points will make up our sin curve.
+	// These points will make up our sine curve.
 	linePoints := sin(n, xmax)
 
 	// These points are our label locations.
@@ -42,7 +42,7 @@ func Example_rotation() {
 	}
 	p.Title.Text = "Rotation Example"
 	p.X.Label.Text = "X"
-	p.Y.Label.Text = "100 × Sin X"
+	p.Y.Label.Text = "100 × Sine X"
 
 	l, err := NewLine(linePoints)
 	if err != nil {

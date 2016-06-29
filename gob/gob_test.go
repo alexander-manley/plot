@@ -25,12 +25,14 @@ func init() {
 }
 
 func TestPersistency(t *testing.T) {
+
+	random := rand.New(rand.NewSource(1))
+
 	// Get some random points
-	rand.Seed(0) // The default random seed is 1.
 	n := 15
-	scatterData := randomPoints(n)
-	lineData := randomPoints(n)
-	linePointsData := randomPoints(n)
+	scatterData := randomPoints(n, random)
+	lineData := randomPoints(n, random)
+	linePointsData := randomPoints(n, random)
 
 	p, err := plot.New()
 	if err != nil {
@@ -111,15 +113,15 @@ func TestPersistency(t *testing.T) {
 }
 
 // randomPoints returns some random x, y points.
-func randomPoints(n int) plotter.XYs {
+func randomPoints(n int, random *rand.Rand) plotter.XYs {
 	pts := make(plotter.XYs, n)
 	for i := range pts {
 		if i == 0 {
-			pts[i].X = rand.Float64()
+			pts[i].X = random.Float64()
 		} else {
-			pts[i].X = pts[i-1].X + rand.Float64()
+			pts[i].X = pts[i-1].X + random.Float64()
 		}
-		pts[i].Y = pts[i].X + rand.Float64()*1e4
+		pts[i].Y = pts[i].X + random.Float64()*1e4
 	}
 	return pts
 }

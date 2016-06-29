@@ -33,20 +33,24 @@ type TextStyle struct {
 	// Font is the font description.
 	Font vg.Font
 
-	// Rotation is the text rotation in radians, counterclockwise from
-	// the default drawing direction.
+	// Rotation is the text rotation in radians,
+	// counterclockwise from the default drawing
+	// direction. (In English, the default drawing
+	// direction is horizontal, left-to-right.)
 	Rotation float64
 
 	// XAlign and YAlign specify the alignment of the text.
-	// Alignment and rotation are interrelated:
-	// when (XAlign, YAlign) = (XCenter,YCenter), the text is rotated about its center,
-	// (XLeft,YBottom) causes the text to rotate around its bottom left corner, etc.
+	// Alignment and rotation are interrelated: when
+	// (XAlign, YAlign) = (XCenter,YCenter), the text
+	// is rotated about its center, (XLeft,YBottom)
+	// causes the text to rotate around its bottom
+	// left corner, etc.
 	XAlign XAlignment
 	YAlign YAlignment
 }
 
 // XAlignment specifies text alignment in the X direction. Three preset
-// options (XLeft, XCenter, and XRight) are available, but an arbitrary alignment
+// options are available, but an arbitrary alignment
 // can also be specified using XAlignment(desired number).
 type XAlignment float64
 
@@ -60,7 +64,7 @@ const (
 )
 
 // YAlignment specifies text alignment in the Y direction. Three preset
-// options (YLeft, YCenter, and YRight) are available, but an arbitrary alignment
+// options are available, but an arbitrary alignment
 // can also be specified using YAlignment(desired number).
 type YAlignment float64
 
@@ -615,7 +619,7 @@ func isect(p0, p1, clip, norm vg.Point) vg.Point {
 }
 
 // FillText fills lines of text in the draw area.
-// x and y specify the location where the text is to be drawn.
+// pt specifies the location where the text is to be drawn.
 func (c *Canvas) FillText(sty TextStyle, pt vg.Point, txt string) {
 	txt = strings.TrimRight(txt, "\n")
 	if len(txt) == 0 {
@@ -647,17 +651,17 @@ func (c *Canvas) FillText(sty TextStyle, pt vg.Point, txt string) {
 	}
 }
 
-// rotatePoint applies rotation Θ (in radians) about the origin to point p.
-func rotatePoint(Θ float64, p vg.Point) vg.Point {
-	if Θ == 0 {
+// rotatePoint applies rotation theta (in radians) about the origin to point p.
+func rotatePoint(theta float64, p vg.Point) vg.Point {
+	if theta == 0 {
 		return p
 	}
 	x := float64(p.X)
 	y := float64(p.Y)
 
 	return vg.Point{
-		X: vg.Length(x*math.Cos(Θ) - y*math.Sin(Θ)),
-		Y: vg.Length(y*math.Cos(Θ) + x*math.Sin(Θ)),
+		X: vg.Length(x*math.Cos(theta) - y*math.Sin(theta)),
+		Y: vg.Length(y*math.Cos(theta) + x*math.Sin(theta)),
 	}
 }
 
@@ -685,7 +689,7 @@ func (sty TextStyle) Height(txt string) vg.Length {
 }
 
 // Rectangle returns a rectangle giving the bounds of
-// this text assuming that it is drawn at 0, 0.
+// this text assuming that it is drawn at (0, 0).
 func (sty TextStyle) Rectangle(txt string) vg.Rectangle {
 	w := sty.Width(txt)
 	h := sty.Height(txt)

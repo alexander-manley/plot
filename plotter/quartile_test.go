@@ -14,15 +14,18 @@ import (
 )
 
 func ExampleQuartPlot() {
+
+	random := rand.New(rand.NewSource(1))
+
 	// Create the example data.
 	n := 100
 	uniform := make(Values, n)
 	normal := make(Values, n)
 	expon := make(Values, n)
 	for i := 0; i < n; i++ {
-		uniform[i] = rand.Float64()
-		normal[i] = rand.NormFloat64()
-		expon[i] = rand.ExpFloat64()
+		uniform[i] = random.Float64()
+		normal[i] = random.NormFloat64()
+		expon[i] = random.ExpFloat64()
 	}
 
 	// Create the QuartPlots

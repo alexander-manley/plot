@@ -8,7 +8,6 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
-	"math/rand"
 	"os"
 	"path/filepath"
 	"strings"
@@ -30,7 +29,6 @@ func goldenPath(path string) string {
 // checkPlot checks a generated plot against a previously created reference.
 // If generateTestData = true, it regereates the reference.
 func checkPlot(ExampleFunc func(), t *testing.T, filenames ...string) {
-	rand.Seed(0)
 	paths := make([]string, len(filenames))
 	for i, fn := range filenames {
 		paths[i] = filepath.Join("testdata", fn)
@@ -49,7 +47,6 @@ func checkPlot(ExampleFunc func(), t *testing.T, filenames ...string) {
 		return
 	}
 
-	rand.Seed(0)
 	// Overwrite the Golden Images.
 	ExampleFunc()
 
@@ -82,6 +79,7 @@ func checkPlot(ExampleFunc func(), t *testing.T, filenames ...string) {
 
 // Draw the plot logo.
 func Example() {
+
 	p, err := plot.New()
 	if err != nil {
 		log.Panic(err)
