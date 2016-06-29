@@ -16,7 +16,7 @@ import (
 
 func ExampleBoxPlot() {
 
-	random := rand.New(rand.NewSource(1))
+	rnd := rand.New(rand.NewSource(1))
 
 	// Create the sample data.
 	n := 100
@@ -24,11 +24,11 @@ func ExampleBoxPlot() {
 	normal := make(ValueLabels, n)
 	expon := make(ValueLabels, n)
 	for i := 0; i < n; i++ {
-		uniform[i].Value = random.Float64()
+		uniform[i].Value = rnd.Float64()
 		uniform[i].Label = fmt.Sprintf("%4.4f", uniform[i].Value)
-		normal[i].Value = random.NormFloat64()
+		normal[i].Value = rnd.NormFloat64()
 		normal[i].Label = fmt.Sprintf("%4.4f", normal[i].Value)
-		expon[i].Value = random.ExpFloat64()
+		expon[i].Value = rnd.ExpFloat64()
 		expon[i].Label = fmt.Sprintf("%4.4f", expon[i].Value)
 	}
 

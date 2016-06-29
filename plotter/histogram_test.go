@@ -18,7 +18,7 @@ import (
 // An example of making a histogram.
 func ExampleHistogram() {
 
-	random := rand.New(rand.NewSource(1))
+	rnd := rand.New(rand.NewSource(1))
 
 	// stdNorm returns the probability of drawing a
 	// value from a standard normal distribution.
@@ -32,7 +32,7 @@ func ExampleHistogram() {
 	n := 10000
 	vals := make(Values, n)
 	for i := 0; i < n; i++ {
-		vals[i] = random.NormFloat64()
+		vals[i] = rnd.NormFloat64()
 	}
 
 	p, err := plot.New()

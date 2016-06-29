@@ -19,7 +19,7 @@ import (
 // and a line with points.
 func ExampleScatter() {
 
-	random := rand.New(rand.NewSource(1))
+	rnd := rand.New(rand.NewSource(1))
 
 	// randomPoints returns some random x, y points
 	// with some interesting kind of trend.
@@ -27,11 +27,11 @@ func ExampleScatter() {
 		pts := make(XYs, n)
 		for i := range pts {
 			if i == 0 {
-				pts[i].X = random.Float64()
+				pts[i].X = rnd.Float64()
 			} else {
-				pts[i].X = pts[i-1].X + random.Float64()
+				pts[i].X = pts[i-1].X + rnd.Float64()
 			}
-			pts[i].Y = pts[i].X + 10*random.Float64()
+			pts[i].Y = pts[i].X + 10*rnd.Float64()
 		}
 		return pts
 	}

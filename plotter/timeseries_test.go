@@ -19,7 +19,7 @@ import (
 // Example_timeSeries draws a time series.
 func Example_timeSeries() {
 
-	random := rand.New(rand.NewSource(1))
+	rnd := rand.New(rand.NewSource(1))
 
 	// randomPoints returns some random x, y points
 	// with some interesting kind of trend.
@@ -36,7 +36,7 @@ func Example_timeSeries() {
 		for i := range pts {
 			date := time.Date(2007+i, month, day, hour, min, sec, nsec, time.UTC).Unix()
 			pts[i].X = float64(date)
-			pts[i].Y = float64(pts[i].X+10*random.Float64()) * 1e-9
+			pts[i].Y = float64(pts[i].X+10*rnd.Float64()) * 1e-9
 		}
 		return pts
 	}

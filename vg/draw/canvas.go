@@ -26,6 +26,11 @@ type Canvas struct {
 }
 
 // TextStyle describes what text will look like.
+// Alignment and rotation are interrelated: when
+// (XAlign, YAlign) = (XCenter,YCenter), the text
+// is rotated about its center, (XLeft,YBottom)
+// causes the text to rotate around its bottom
+// left corner, etc.
 type TextStyle struct {
 	// Color is the text color.
 	Color color.Color
@@ -33,18 +38,11 @@ type TextStyle struct {
 	// Font is the font description.
 	Font vg.Font
 
-	// Rotation is the text rotation in radians,
-	// counterclockwise from the default drawing
-	// direction. (In English, the default drawing
-	// direction is horizontal, left-to-right.)
+	// Rotation is the text rotation in radians.
+	// Positive rotation is counterclockwise.
 	Rotation float64
 
 	// XAlign and YAlign specify the alignment of the text.
-	// Alignment and rotation are interrelated: when
-	// (XAlign, YAlign) = (XCenter,YCenter), the text
-	// is rotated about its center, (XLeft,YBottom)
-	// causes the text to rotate around its bottom
-	// left corner, etc.
 	XAlign XAlignment
 	YAlign YAlignment
 }
