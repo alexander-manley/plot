@@ -71,7 +71,6 @@ func drawJpg(name string, mkplot func() *plot.Plot) {
 
 // Example_errpoints draws some error points.
 func Example_errpoints() *plot.Plot {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// Get some random data.

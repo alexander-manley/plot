@@ -18,7 +18,6 @@ import (
 // ExampleScatter draws some scatter points, a line,
 // and a line with points.
 func ExampleScatter() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// randomPoints returns some random x, y points

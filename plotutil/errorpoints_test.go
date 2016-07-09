@@ -12,7 +12,6 @@ import (
 )
 
 func ExampleErrorPoints() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// Get some random data.

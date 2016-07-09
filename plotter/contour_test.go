@@ -69,7 +69,6 @@ func TestHeatMapWithContour(t *testing.T) {
 }
 
 func TestComplexContours(t *testing.T) {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	if !*visualDebug {

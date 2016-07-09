@@ -45,7 +45,7 @@ type Axis struct {
 
 		// TextStyle is the style of the axis label text.
 		// For the vertical axis, one quarter turn
-		// counter clockwise will be added to the label
+		// counterclockwise will be added to the label
 		// text before drawing.
 		draw.TextStyle
 	}

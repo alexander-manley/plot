@@ -79,7 +79,6 @@ func checkPlot(ExampleFunc func(), t *testing.T, filenames ...string) {
 
 // Draw the plot logo.
 func Example() {
-
 	p, err := plot.New()
 	if err != nil {
 		log.Panic(err)

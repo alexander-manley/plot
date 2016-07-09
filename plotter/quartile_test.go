@@ -14,7 +14,6 @@ import (
 )
 
 func ExampleQuartPlot() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// Create the example data.

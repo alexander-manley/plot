@@ -17,7 +17,6 @@ import (
 
 // An example of making a histogram.
 func ExampleHistogram() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// stdNorm returns the probability of drawing a

@@ -15,7 +15,6 @@ import (
 
 // ExampleErrors draws points and error bars.
 func ExampleErrors() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	randomError := func(n int) Errors {

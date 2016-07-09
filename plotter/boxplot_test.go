@@ -15,7 +15,6 @@ import (
 )
 
 func ExampleBoxPlot() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// Create the sample data.

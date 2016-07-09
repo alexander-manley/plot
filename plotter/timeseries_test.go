@@ -18,7 +18,6 @@ import (
 
 // Example_timeSeries draws a time series.
 func Example_timeSeries() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// randomPoints returns some random x, y points

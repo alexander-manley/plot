@@ -46,7 +46,6 @@ func TestBubblesRadius(t *testing.T) {
 }
 
 func ExampleBubbles() {
-
 	rnd := rand.New(rand.NewSource(1))
 
 	// randomTriples returns some random x, y, z triples
