@@ -178,16 +178,24 @@ func (h *HeatMap) DataRange() (xmin, xmax, ymin, ymax float64) {
 		xmax = 0.5
 		xmin = -0.5
 	default:
+		// Min and max are the first and last h.GridXYZ.X
+		// values extended beyond by half the distance
+		// between them and their adjacent h.GridXYZ.X
+		// value.
 		xmax = (3*h.GridXYZ.X(c-1) - h.GridXYZ.X(c-2)) / 2
-		xmin = (h.GridXYZ.X(0) - h.GridXYZ.X(1)) / 2
+		xmin = (3*h.GridXYZ.X(0) - h.GridXYZ.X(1)) / 2
 	}
 	switch r {
 	case 1: // Make a unit length when there is no neighbour.
 		ymax = 0.5
 		ymin = -0.5
 	default:
+		// Min and max are the first and last h.GridXYZ.Y
+		// values extended beyond by half the distance
+		// between them and their adjacent h.GridXYZ.Y
+		// value.
 		ymax = (3*h.GridXYZ.Y(r-1) - h.GridXYZ.Y(r-2)) / 2
-		ymin = (h.GridXYZ.Y(0) - h.GridXYZ.Y(1)) / 2
+		ymin = (3*h.GridXYZ.Y(0) - h.GridXYZ.Y(1)) / 2
 	}
 	return xmin, xmax, ymin, ymax
 }
